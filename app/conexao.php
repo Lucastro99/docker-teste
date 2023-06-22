@@ -15,5 +15,5 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-echo "Conexão com o banco de dados estabelecida!";
+// echo "Conexão com o banco de dados estabelecida!";
 ?>
