@@ -1,3 +1,10 @@
+<?php
+    require 'conexao.php';
+
+    $query = "SELECT * FROM tabela1";
+    
+    $data = mysqli_query($conexao, $query);
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -26,36 +33,25 @@
                     <th scope="col">E-mail</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Idade</th>
-                    <th scope="col">Senha</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class=" text-center">
+                <?php 
+                    while($get = mysqli_fetch_array($data)) {
+                ?>
+                <tr class="text-center">
                     <th scope="row">1</th>
-                    <td>Eric</td>
-                    <td>eric@gmail.com</td>
-                    <td>44 9999999999</td>
-                    <td>17</td>
-                    <td>123456</td>
+                    <td><?php echo $get['nome'] ?></td>
+                    <td><?php echo $get['email'] ?></td>
+                    <td><?php echo $get['telefone'] ?></td>
+                    <td><?php echo $get['idade'] ?></td>
                     <td>
                         <button type="button" class="btn btn-primary p-2 d-inline-flex align-items-center gap-2"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
                         <button type="button" class="btn btn-danger p-2 d-inline-flex align-items-center gap-2"><i class="fa-solid fa-trash"></i> Deletar</button>
                     </td>
                 </tr>
-
-                <tr class=" text-center">
-                    <th scope="row">2</th>
-                    <td>Lucas</td>
-                    <td>lucas@gmail.com</td>
-                    <td>44 9999999999</td>
-                    <td>22</td>
-                    <td>123456</td>
-                    <td>
-                        <button type="button" class="btn btn-primary p-2 d-inline-flex align-items-center gap-2"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
-                        <button type="button" class="btn btn-danger p-2 d-inline-flex align-items-center gap-2"><i class="fa-solid fa-trash"></i> Deletar</button>
-                    </td>
-                </tr>
+                <?php }?>
             </tbody>
         </table>
     </div>
